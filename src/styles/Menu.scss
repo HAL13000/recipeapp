@@ -1,0 +1,18 @@
+div.menu {
+  background: orange;
+  position: absolute;
+  width: 100px;
+  button {
+    display: flex;
+    flex-direction: column;
+    background: none;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+    &:hover {
+      background-color: #fff;
+      transition: 0.5s;
+    }
+  }
+}
