@@ -1,7 +1,15 @@
 import "./App.css";
+import { MenuProvider } from "./components/common/MenuContext";
+import Home from "./pages/Home";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <MenuProvider>
+      <div className="App">
+        <Home />
+      </div>
+    </MenuProvider>
+  );
 }
 
 export default App;
