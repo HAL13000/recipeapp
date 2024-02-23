@@ -1,7 +1,14 @@
+@import "./media";
+@import "./variables";
+
 div.menu {
-  background: orange;
+  //   background: orange;
+
   position: absolute;
   width: 100px;
+  @include pc {
+    width: 180px;
+  }
   button {
     display: flex;
     flex-direction: column;
@@ -11,8 +18,9 @@ div.menu {
     margin: 0;
     width: 100%;
     &:hover {
-      background-color: #fff;
-      transition: 0.5s;
+      background-color: $orange;
+      color: $white;
+      transition: 0.3s;
     }
   }
 }
