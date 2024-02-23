@@ -1,0 +1,12 @@
+// @import "../styles/variables";
+
+@mixin flexBox_spaceBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin flexBox_spaceCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

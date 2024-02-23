@@ -1,32 +1,52 @@
+@import "./media";
+@import "./functions";
+@import "./variables";
 div.home {
   // background-color: palevioletred;
-  .logo {
-    h1 {
-      padding: 20px 0 0 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
+  div.logo {
+    // background-color: red;
+    justify-content: center;
+    display: flex;
+    padding: 20px 0 0 0;
+    img {
+      width: 150px;
+      @include pc {
+        width: 200px;
+      }
     }
   }
   .search {
     // background: green;
-    display: flex;
-    justify-content: center;
     padding: 30px 0;
-    width: auto;
+    @include flexBox_spaceCenter;
+    @include pc {
+      padding: 50px 0;
+    }
 
     input {
       // background-color: blue;
-      margin-right: 5px;
       padding: 5px;
-      border-radius: 15px;
+      border-radius: 10px;
+      width: 150px;
+      height: 25px;
+      display: flex;
+      @include pc {
+        width: 600px;
+        height: 35px;
+      }
     }
     button {
       // background-color: skyblue;
       padding: 5px;
-      border-radius: 15px;
+      border-radius: 20px;
+      display: flex;
+      margin-left: 5px;
       &:hover {
-        background: #fff;
+        background: $orange;
+      }
+      @include pc {
+        padding: 10px;
+        border-radius: 30px;
       }
     }
   }
