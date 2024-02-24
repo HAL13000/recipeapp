@@ -1,0 +1,8 @@
+@import "./media";
+
+div,
+button {
+  @include pc {
+    font-size: 16px;
+  }
+}
