@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.scss";
 import { MenuProvider } from "./components/common/MenuContext";
 import Home from "./pages/Home";
 
