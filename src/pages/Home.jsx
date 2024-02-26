@@ -3,6 +3,7 @@ import Menu from "../components/common/Menu";
 import "../styles/Home.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import logo_black from "../assets/logo/flavory-high-resolution-logo-black-transparent.png";
+import RecipeBox from "../components/common/RecipeBox";
 // import MenuIcon from "@mui/icons-material/Menu";
 const Home = () => {
   const [searchRecipe, setSearchRecipe] = useState("");
@@ -15,9 +16,11 @@ const Home = () => {
   return (
     <div className="home">
       <Menu />
+
       <div className="logo">
         <img src={logo_black} alt="Logo" />
       </div>
+
       <div className="search">
         <input
           type="text"
@@ -28,6 +31,10 @@ const Home = () => {
         <button onClick={handleSearchRecipe}>
           <SearchIcon />
         </button>
+      </div>
+
+      <div className="recipes">
+        <RecipeBox />
       </div>
     </div>
   );
