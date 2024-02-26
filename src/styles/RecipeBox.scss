@@ -1,0 +1,48 @@
+@import "./_functions";
+@import "./_variables";
+.recipeBox {
+  .recipeBox_container {
+    background-color: $lightOrange;
+    display: flex;
+    margin: 15px;
+    border-radius: 10px;
+    // border: 1px solid $gray;
+    @include flexBox_spaceBetween;
+    .recipeBox_content {
+      display: flex;
+      flex-direction: column;
+      p.title {
+        // background-color: seagreen;
+        font-size: 1.5em;
+        font-weight: 800;
+        padding: 0 15px;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      p.caption {
+        // background-color: lemonchiffon;
+        font: 1em;
+        padding: 0 15px;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .recipeBox_image {
+    img {
+      width: 100px;
+      display: flex;
+      border-radius: 10px;
+      //   border: 5px solid $lightOrange;
+      margin: 20px;
+    }
+  }
+}

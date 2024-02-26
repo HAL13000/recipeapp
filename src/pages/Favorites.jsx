@@ -1,13 +1,13 @@
 import React from "react";
 import Menu from "../components/common/Menu";
 
-const Recipe = () => {
+const Favorites = () => {
   return (
     <div>
       <Menu />
-      Recipe
+      Favorites
     </div>
   );
 };
 
-export default Recipe;
+export default Favorites;
