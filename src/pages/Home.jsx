@@ -4,25 +4,14 @@ import "../styles/Home.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import logo_black from "../assets/logo/flavory-high-resolution-logo-black-transparent.png";
 import RecipeBox from "../components/common/RecipeBox";
+import { getRecipes } from "../api/index";
 
 const Home = () => {
-  const APP_ID = "0c8eb085";
-  const APP_KEY = "137ccd862a7a33918e3a316299f8f288";
-
-  const getRecipes = async () => {
-    const response = await fetch(
-      `https://api.edamam.com/search?q="banana"&app_id=${APP_ID}&app_key=${APP_KEY}`
-    );
-    const data = await response.json();
-    console.log(data.hits);
-  };
+  const [searchRecipe, setSearchRecipe] = useState("");
 
   useEffect(() => {
     getRecipes();
   }, []);
-
-  const [searchRecipe, setSearchRecipe] = useState("");
-
   const handleSearchRecipe = (e) => {
     setSearchRecipe(e.target.value);
   };
