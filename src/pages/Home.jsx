@@ -8,13 +8,16 @@ import { getRecipes } from "../api/index";
 
 const Home = () => {
   const [searchRecipe, setSearchRecipe] = useState("");
+  const [recipes, setRecipes] = useState([]);
+
+  const handleSearchRecipe = (e) => {
+    setSearchRecipe(e.target.value);
+  };
 
   useEffect(() => {
     getRecipes();
   }, []);
-  const handleSearchRecipe = (e) => {
-    setSearchRecipe(e.target.value);
-  };
+
   useEffect(() => {
     console.log(searchRecipe);
   }, [searchRecipe]);
