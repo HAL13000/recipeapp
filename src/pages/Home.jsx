@@ -5,42 +5,30 @@ import SearchIcon from "@mui/icons-material/Search";
 import logo_black from "../assets/logo/flavory-high-resolution-logo-black-transparent.png";
 import RecipeBox from "../components/common/RecipeBox";
 import { useNavigate } from "react-router-dom";
-import recipeApi from "../api/RecipeApi";
+import { getRecipe } from "../api/RecipeApi";
 
 const Home = () => {
-  // const [searchRecipe, setSearchRecipe] = useState("");
-  // const [recipes, setRecipes] = useState([]);
+  const [searchRecipe, setSearchRecipe] = useState("");
+  const [recipes, setRecipes] = useState([]);
   // const [query, setQuery] = useState("banana");
   const navigate = useNavigate();
 
-  //----
-  // const getRecipes = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `https://api.edamam.com/search?q=${query}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
-  //     );
-  //     const data = await response.json();
-  //     setRecipes(data.hits);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // getRecipe();
-  // const getSearch = (e) => {
-  //   e.preventDefault();
-  //   setQuery(searchRecipe);
-  //   setSearchRecipe("");
-  // };
+  const getSearch = () => {
+    // ☆
+    getRecipe(searchRecipe)
+      .then((data) => {
+        console.log(data);
+        // update recipes with new data .. data.hits = recipes(useState)
+        setRecipes(data.hits);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
-  // const handleSearchRecipe = (e) => {
-  //   setSearchRecipe(e.target.value);
-  // };
-
-  // useEffect(() => {
-  //   getRecipe();
-  // }, [query]);
-
-  // ----
+  const handleSearchRecipe = (e) => {
+    setSearchRecipe(e.target.value);
+  };
 
   useEffect(() => {
     console.log(searchRecipe);
@@ -59,30 +47,31 @@ const Home = () => {
       </div>
 
       <div className="search">
-        <form onSubmit={getSearch}>
+        <form>
           <input
             type="text"
             placeholder="I want to cook..."
             value={searchRecipe}
             onChange={handleSearchRecipe}
           />
-          <button type="submit">
+          <button type="button" onClick={getSearch}>
             <SearchIcon />
           </button>
         </form>
       </div>
 
-      {recipes.map((recipe) => (
-        <div className="recipes">
-          <RecipeBox
-            key={recipe.recipe.label}
-            title={recipe.recipe.label}
-            calories={recipe.recipe.calories}
-            image={recipe.recipe.image}
-            ingredients={recipe.recipe.ingredients}
-          />
-        </div>
-      ))}
+      {recipes &&
+        recipes.map((recipe) => (
+          <div className="recipes">
+            <RecipeBox
+              key={recipe.recipe.label}
+              title={recipe.recipe.label}
+              calories={recipe.recipe.calories}
+              image={recipe.recipe.image}
+              ingredients={recipe.recipe.ingredients}
+            />
+          </div>
+        ))}
     </div>
   );
 };

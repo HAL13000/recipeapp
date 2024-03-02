@@ -3,6 +3,8 @@ import "../../styles/RecipeBox.scss";
 import logoOrange from "../../assets/logo/logo-color.png";
 import { useNavigate } from "react-router-dom";
 
+// dispatch function by using setSelectedRecipe
+
 const RecipeBox = () => {
   const navigate = useNavigate();
 
