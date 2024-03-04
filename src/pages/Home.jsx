@@ -5,7 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import logo_black from "../assets/logo/flavory-high-resolution-logo-black-transparent.png";
 import RecipeBox from "../components/common/RecipeBox";
 import { useNavigate } from "react-router-dom";
-import { getRecipe } from "../api/RecipeApi";
+import recipeApi from "../api/recipeApi";
 
 const Home = () => {
   const [searchRecipe, setSearchRecipe] = useState("");
@@ -13,31 +13,23 @@ const Home = () => {
   // const [query, setQuery] = useState("banana");
   const navigate = useNavigate();
 
-  const getSearch = () => {
-    // ☆
-    getRecipe(searchRecipe)
-      .then((data) => {
-        console.log(data);
-        // update recipes with new data .. data.hits = recipes(useState)
-        setRecipes(data.hits);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  const getSearch = async () => {
+    try {
+      const data = await recipeApi.getRecipeFromQuery(searchRecipe);
+      // console.log(data);
+      setRecipes(data.hits);
+    } catch (err) {
+      console.log("Error Searching Recipe ", err);
+    }
   };
+  useEffect(() => {
+    getSearch();
+  }, [searchRecipe]);
 
   const handleSearchRecipe = (e) => {
     setSearchRecipe(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(searchRecipe);
-  }, [searchRecipe]);
-
-  // const navigateToRecipe = () => {
-  //   navigate("/recipe");
-  //   // recipe のページにいく時必ずそのIDと会ったページにいかなきゃいけない
-  // };
   return (
     <div className="home">
       <Menu />
@@ -77,3 +69,27 @@ const Home = () => {
 };
 
 export default Home;
+
+// const getSearch = () => {
+//   // ☆
+//   getRecipe(searchRecipe)
+//   recipeApi
+//     .getRecipeFromQuery(searchRecipe)
+//     .then((data) => {
+//       console.log(data);
+//       // update recipes with new data .. data.hits = recipes(useState)
+//       setRecipes(data.hits);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
+// };
+
+// useEffect(() => {
+//   console.log(searchRecipe);
+// }, [searchRecipe]);
+
+// const navigateToRecipe = () => {
+//   navigate("/recipe");
+//   // recipe のページにいく時必ずそのIDと会ったページにいかなきゃいけない
+// };
