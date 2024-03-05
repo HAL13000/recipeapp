@@ -6,25 +6,31 @@ import logo_black from "../assets/logo/flavory-high-resolution-logo-black-transp
 import RecipeBox from "../components/common/RecipeBox";
 import { useNavigate } from "react-router-dom";
 import recipeApi from "../api/recipeApi";
+import { useDispatch, useSelector } from "react-redux";
+import { setRecipeSlice } from "../redux/provider/recipeSlice";
 
 const Home = () => {
   const [searchRecipe, setSearchRecipe] = useState("");
   const [recipes, setRecipes] = useState([]);
   // const [query, setQuery] = useState("banana");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const recipe = useSelector((state) => state.recipe.value);
 
   const getSearch = async () => {
     try {
       const data = await recipeApi.getRecipeFromQuery(searchRecipe);
       // console.log(data);
       setRecipes(data.hits);
+      dispatch(setRecipeSlice(data.hits));
     } catch (err) {
       console.log("Error Searching Recipe ", err);
     }
   };
+
   useEffect(() => {
     getSearch();
-  }, [searchRecipe]);
+  }, [dispatch, searchRecipe]);
 
   const handleSearchRecipe = (e) => {
     setSearchRecipe(e.target.value);

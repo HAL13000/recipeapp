@@ -2,18 +2,24 @@ import React from "react";
 import "../../styles/RecipeBox.scss";
 import logoOrange from "../../assets/logo/logo-color.png";
 import { useNavigate } from "react-router-dom";
+import { setRecipeSlice } from "../../redux/provider/recipeSlice";
+import { useDispatch } from "react-redux";
 
 // dispatch function by using setSelectedRecipe
 
 const RecipeBox = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // recipesをどうやってreduxの中から持ってくればいいのか
+  const recipes = dispatch(setRecipeSlice());
 
   const navigateToThisRecipe = () => {
     navigate("/recipe");
   };
   return (
     <div className="recipeBox">
-      {/* {recipes.map((recipe) => (
+      {recipes.map((recipe) => (
         <div
           className="recipeBox_container"
           onClick={navigateToThisRecipe}
@@ -47,8 +53,8 @@ const RecipeBox = () => {
             <img src={logoOrange} alt="" />
           </div>
         </div>
-      ))} */}
-      <div className="recipeBox_container" onClick={navigateToThisRecipe}>
+      ))}
+      {/* <div className="recipeBox_container" onClick={navigateToThisRecipe}>
         <div className="recipeBox_content">
           <p className="title">
             Title Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -72,7 +78,7 @@ const RecipeBox = () => {
         <div className="recipeBox_image">
           <img src={logoOrange} alt="" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
