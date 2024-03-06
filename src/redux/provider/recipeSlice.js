@@ -4,15 +4,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   query: null,
+  calories: null,
+  image: null,
+  ingredients: null,
+  ingredientLines: null,
+  label: null,
+  url: null,
+
   // Recognize selected or not by client action
-  selectedRecipe: null,
+  selectedRecipe: Boolean,
 };
 
 export const recipeSlice = createSlice({
   name: "recipe",
   initialState,
   reducers: {
-    setQuery: (state, action) => {
+    setRecipeSlice: (state, action) => {
       state.query = action.payload;
     },
     setSelectedRecipe: (state, action) => {
@@ -21,5 +28,5 @@ export const recipeSlice = createSlice({
   },
 });
 
-export const { setRecipeSlice } = recipeSlice.actions;
+export const { setRecipeSlice, setSelectedRecipe } = recipeSlice.actions;
 export default recipeSlice.reducer;

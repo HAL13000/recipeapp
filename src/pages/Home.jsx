@@ -7,7 +7,10 @@ import RecipeBox from "../components/common/RecipeBox";
 import { useNavigate } from "react-router-dom";
 import recipeApi from "../api/recipeApi";
 import { useDispatch, useSelector } from "react-redux";
-import { setRecipeSlice } from "../redux/provider/recipeSlice";
+import {
+  setRecipeSlice,
+  setSelectedRecipe,
+} from "../redux/provider/recipeSlice";
 
 const Home = () => {
   const [searchRecipe, setSearchRecipe] = useState("");
@@ -16,13 +19,18 @@ const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const recipe = useSelector((state) => state.recipe.value);
+  // const [selectedRecipe, setSelectedRecipe] = useState(false);
 
   const getSearch = async () => {
     try {
       const data = await recipeApi.getRecipeFromQuery(searchRecipe);
-      // console.log(data);
+      console.log(data);
       setRecipes(data.hits);
       dispatch(setRecipeSlice(data.hits));
+
+      // dispatch-> navigate
+      // give all the data of recipe to redux
+      // and navigate to the one clicked(recognize by onClick)
     } catch (err) {
       console.log("Error Searching Recipe ", err);
     }
@@ -34,6 +42,11 @@ const Home = () => {
 
   const handleSearchRecipe = (e) => {
     setSearchRecipe(e.target.value);
+  };
+  const navigateToThisRecipe = (recipeKey) => {
+    dispatch(setSelectedRecipe(true));
+    console.log(recipeKey);
+    navigate(`/recipe/${recipeKey}`);
   };
 
   return (
@@ -60,9 +73,12 @@ const Home = () => {
 
       {recipes &&
         recipes.map((recipe) => (
-          <div className="recipes">
+          <div
+            className="recipes"
+            key={recipe.recipe.label}
+            onClick={() => navigateToThisRecipe(recipe.recipe.label)}
+          >
             <RecipeBox
-              key={recipe.recipe.label}
               title={recipe.recipe.label}
               calories={recipe.recipe.calories}
               image={recipe.recipe.image}
