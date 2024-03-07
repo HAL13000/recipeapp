@@ -2,12 +2,12 @@
 @import "./variables";
 
 div.menu {
-  //   background: orange;
-
+  background: $white;
+  // box-shadow: 2px 2px 1px 0.5px rgba(0, 0, 0, 0.2);
   position: absolute;
-  width: 100px;
+  width: 90px;
   @include pc {
-    width: 180px;
+    width: 130px;
   }
   button {
     display: flex;

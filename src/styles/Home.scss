@@ -15,10 +15,13 @@ div.home {
       }
     }
   }
+  form {
+    // background: green;
+    @include flexBox_spaceCenter;
+  }
   .search {
     // background: green;
     padding: 30px 0;
-    @include flexBox_spaceCenter;
     @include pc {
       padding: 50px 0;
     }
@@ -27,7 +30,7 @@ div.home {
       // background-color: blue;
       padding: 5px;
       border-radius: 10px;
-      width: 150px;
+      width: 200px;
       height: 25px;
       display: flex;
       @include pc {
