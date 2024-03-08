@@ -31,8 +31,8 @@ const Recipe = () => {
 
   return (
     <div className="recipe">
-      <Menu />
-      <p>{label}</p>
+      {/* <Menu /> */}
+      <p>{selectedRecipe.label}</p>
       {/* <div className="recipeData">
         <h1 className="title">{recipe.title}</h1>
         <ol className="ingredients">

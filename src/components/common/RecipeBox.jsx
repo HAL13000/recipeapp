@@ -2,10 +2,7 @@ import React from "react";
 import "../../styles/RecipeBox.scss";
 import logoOrange from "../../assets/logo/logo-color.png";
 import { useNavigate } from "react-router-dom";
-import {
-  setRecipeSlice,
-  setSelectedRecipe,
-} from "../../redux/provider/recipeSlice";
+import { setSelectedRecipe } from "../../redux/provider/recipeSlice";
 import { useDispatch } from "react-redux";
 
 // dispatch function by using setSelectedRecipe
@@ -13,19 +10,19 @@ import { useDispatch } from "react-redux";
 const RecipeBox = ({ key, title, ingredients, image }) => {
   // console.log(key, title, ingredients, image);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const navigateToThisRecipe = (recipeKey) => {
-    dispatch(setSelectedRecipe(true));
-    console.log(recipeKey);
-    // navigate(`/recipe/${recipeKey}`);
-  };
+  // const navigateToThisRecipe = (recipe) => {
+  //   dispatch(setSelectedRecipe());
+  //   console.log(recipe);
+  //   // navigate(`/recipe/${recipeKey}`);
+  // };
   return (
     <div className="recipeBox">
       <div
         className="recipeBox_container"
         key={key}
-        onClick={() => navigateToThisRecipe(key)}
+        // onClick={() => navigateToThisRecipe(key)}
         // title={title}
         // calories={recipe.recipe.calories}
         // image={image}
