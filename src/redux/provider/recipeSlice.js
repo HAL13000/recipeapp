@@ -12,7 +12,7 @@ const initialState = {
   url: null,
 
   // Recognize selected or not by client action
-  selectedRecipe: Boolean,
+  selectedRecipe: false,
 };
 
 export const recipeSlice = createSlice({
@@ -28,5 +28,6 @@ export const recipeSlice = createSlice({
   },
 });
 
+// export const { setRecipeSlice } = recipeSlice.actions;
 export const { setRecipeSlice, setSelectedRecipe } = recipeSlice.actions;
 export default recipeSlice.reducer;
