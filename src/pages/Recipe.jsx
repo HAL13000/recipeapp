@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Menu from "../components/common/Menu";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setRecipeSlice,
-  setSelectedRecipe,
-} from "../redux/provider/recipeSlice";
+import { setRecipeSlice } from "../redux/provider/recipeSlice";
 import recipeApi from "../api/recipeApi";
 import { convertLength } from "@mui/material/styles/cssUtils";
 import { useParams } from "react-router-dom";
