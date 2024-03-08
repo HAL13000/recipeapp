@@ -4,30 +4,30 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   query: null,
-  calories: null,
-  image: null,
-  ingredients: null,
-  ingredientLines: null,
-  label: null,
-  url: null,
+  queryRecipes: null,
 
   // Recognize selected or not by client action
-  selectedRecipe: false,
+  selectedRecipe: null,
 };
 
 export const recipeSlice = createSlice({
   name: "recipe",
   initialState,
   reducers: {
-    setRecipeSlice: (state, action) => {
+    setQuery: (state, action) => {
       state.query = action.payload;
     },
+    setQueryRecipes: (state, action) => {
+      state.queryRecipes = action.payload;
+    },
     setSelectedRecipe: (state, action) => {
+      console.log("from redux", action.payload);
       state.selectedRecipe = action.payload;
     },
   },
 });
 
 // export const { setRecipeSlice } = recipeSlice.actions;
-export const { setRecipeSlice, setSelectedRecipe } = recipeSlice.actions;
+export const { setSelectedRecipe, setQueryRecipes, setQuery } =
+  recipeSlice.actions;
 export default recipeSlice.reducer;

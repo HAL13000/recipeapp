@@ -8,25 +8,28 @@ import { useNavigate } from "react-router-dom";
 import recipeApi from "../api/recipeApi";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setRecipeSlice,
-  // setSelectedRecipe,
+  setQuery,
+  setQueryRecipes,
+  setSelectedRecipe,
 } from "../redux/provider/recipeSlice";
 
 const Home = () => {
-  const [searchRecipe, setSearchRecipe] = useState("");
-  const [recipes, setRecipes] = useState([]);
-  // const [query, setQuery] = useState("banana");
-  // const navigate = useNavigate();
+  // const [searchRecipe, setSearchRecipe] = useState("");
+  // const [recipes, setRecipes] = useState([]);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const recipe = useSelector((state) => state.recipe.value);
-  const [selectedRecipe, setSelectedRecipe] = useState(false);
+  const queryRecipes = useSelector((state) => state.recipe.queryRecipes);
+  const query = useSelector((state) => state.recipe.query);
+
+  // const [selectedRecipe, setSelectedRecipe] = useState(false);
 
   const getSearch = async () => {
     try {
-      const data = await recipeApi.getRecipeFromQuery(searchRecipe);
+      const data = await recipeApi.getRecipeFromQuery(query);
       console.log(data);
-      setRecipes(data.hits);
-      dispatch(setRecipeSlice(data.hits));
+      // setRecipes(data.hits);
+      dispatch(setQueryRecipes(data.hits));
 
       // dispatch-> navigate
       // give all the data of recipe to redux
@@ -36,18 +39,19 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    getSearch();
-  }, [dispatch, searchRecipe]);
+  // useEffect(() => {
+  //   query && getSearch();
+  // }, [query]);
 
   const handleSearchRecipe = (e) => {
-    setSearchRecipe(e.target.value);
+    dispatch(setQuery(e.target.value));
+    getSearch();
   };
-  // const navigateToThisRecipe = (recipeKey) => {
-  //   dispatch(setSelectedRecipe(true));
-  //   console.log(recipeKey);
-  //   navigate(`/recipe/${recipeKey}`);
-  // };
+  const navigateToThisRecipe = (recipe) => {
+    console.log(recipe);
+    dispatch(setSelectedRecipe(recipe));
+    navigate(`/recipe`);
+  };
 
   return (
     <div className="home">
@@ -62,7 +66,7 @@ const Home = () => {
           <input
             type="text"
             placeholder="I want to cook..."
-            value={searchRecipe}
+            value={query}
             onChange={handleSearchRecipe}
           />
           <button type="button" onClick={getSearch}>
@@ -71,15 +75,16 @@ const Home = () => {
         </form>
       </div>
 
-      {recipes &&
-        recipes.map((recipe) => (
+      {queryRecipes &&
+        queryRecipes.map((recipe, i) => (
           <div
-            className="recipes"
-            // onClick={() => navigateToThisRecipe(recipe.recipe.label)}
+            key={i}
+            className="recipe"
+            onClick={() => navigateToThisRecipe(recipe.recipe)}
           >
             <RecipeBox
               // !! key
-              key={recipe.recipe.key}
+              // key={recipe.recipe.key}
               title={recipe.recipe.label}
               calories={recipe.recipe.calories}
               image={recipe.recipe.image}
