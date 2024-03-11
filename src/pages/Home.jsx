@@ -14,26 +14,18 @@ import {
 } from "../redux/provider/recipeSlice";
 
 const Home = () => {
-  // const [searchRecipe, setSearchRecipe] = useState("");
-  // const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const recipe = useSelector((state) => state.recipe.value);
+  const recipe = useSelector((state) => state.recipe.setSelectedRecipe);
   const queryRecipes = useSelector((state) => state.recipe.queryRecipes);
   const query = useSelector((state) => state.recipe.query);
-
-  // const [selectedRecipe, setSelectedRecipe] = useState(false);
 
   const getSearch = async () => {
     try {
       const data = await recipeApi.getRecipeFromQuery(query);
-      console.log(data);
+      // console.log(data);
       // setRecipes(data.hits);
       dispatch(setQueryRecipes(data.hits));
-
-      // dispatch-> navigate
-      // give all the data of recipe to redux
-      // and navigate to the one clicked(recognize by onClick)
     } catch (err) {
       console.log("Error Searching Recipe ", err);
     }
@@ -48,7 +40,7 @@ const Home = () => {
     getSearch();
   };
   const navigateToThisRecipe = (recipe) => {
-    console.log(recipe);
+    // console.log(recipe);
     dispatch(setSelectedRecipe(recipe));
     navigate(`/recipe`);
   };
