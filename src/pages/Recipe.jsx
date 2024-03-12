@@ -1,44 +1,54 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import Menu from "../components/common/Menu";
-import { useDispatch, useSelector } from "react-redux";
-import { setRecipeSlice } from "../redux/provider/recipeSlice";
-import recipeApi from "../api/recipeApi";
-// import { useParams } from "react-router-dom";
 
 const Recipe = () => {
-  // const query = useParams();
-  // const queryData = useSelector((state) => state.recipe.query);
-  // const calories = useSelector((state) => state.recipe.calories);
-  // const image = useSelector((state) => state.recipe.image);
-  // const ingredients = useSelector((state) => state.recipe.ingredients);
-  // const ingredientLines = useSelector((state) => state.recipe.query);
-  // const label = useSelector((state) => state.recipe.label);
-  // const url = useSelector((state) => state.recipe.url);
   const selectedRecipe = useSelector((state) => state.recipe.selectedRecipe);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    //   const fetchRecipeData = async () => {
-    //     try {
-    //       console.log(selectedRecipe);
-    //       // const response = await recipeApi.get(query);
-    //       console.log(response);
-    //     } catch (err) {
-    //       console.log("Error visiting Recipe ", err);
-    //     }
-    //   };
-    // });
-
-    return (
-      <div>
-        <Menu />
-        {/* <h1>{selectedRecipe.label}</h1> */}
-      </div>
-    );
-  });
+  // console.log(selectedRecipe);
+  return (
+    <section>
+      <Menu />
+      <p>{selectedRecipe.label}</p>
+      <img src={selectedRecipe.image} alt="" />
+      <p>{selectedRecipe.ingredientLines}</p>
+      <p>{selectedRecipe.url}</p>
+      <p>{selectedRecipe.calories}</p>
+    </section>
+  );
 };
 
 export default Recipe;
+
+// import React, { useEffect, useState } from "react";
+// import Menu from "../components/common/Menu";
+// import { useDispatch, useSelector } from "react-redux";
+// import { setRecipeSlice } from "../redux/provider/recipeSlice";
+// import recipeApi from "../api/recipeApi";
+// import { useParams } from "react-router-dom";
+
+// const Recipe = () => {
+//   const query = useParams();
+//   const selectedRecipe = useSelector((state) => state.recipe.selectedRecipe);
+//   const dispatch = useDispatch();
+
+//   useEffect(() => {
+//     const fetchRecipeData = async () => {
+//       try {
+//         console.log(selectedRecipe);
+//         const response = await recipeApi.get(query);
+//       } catch (err) {
+//         console.log("Error visiting Recipe ", err);
+//       }
+//     }};
+//     return (
+//       <div>
+//         <Menu />
+//         <h1>{selectedRecipe.label}</h1>
+//       </div>
+//     );
+//   };
+
+// export default Recipe;
 
 //  {/* {/* <div className="recipeData">
 //       <h1 className="title">{recipe.title}</h1>
