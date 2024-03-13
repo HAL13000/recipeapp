@@ -1,20 +1,8 @@
 @import "./media";
 @import "./functions";
 @import "./variables";
+
 div.home {
-  // background-color: palevioletred;
-  div.logo {
-    // background-color: red;
-    justify-content: center;
-    display: flex;
-    padding: 20px 0 0 0;
-    img {
-      width: 150px;
-      @include pc {
-        width: 200px;
-      }
-    }
-  }
   form {
     // background: green;
     @include flexBox_spaceCenter;

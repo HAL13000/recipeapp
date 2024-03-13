@@ -1,26 +1,97 @@
 @import "./media";
 @import "./variables";
+@import "./functions";
 
-div.menu {
+nav {
   background: $white;
-  // box-shadow: 2px 2px 1px 0.5px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  width: 90px;
-  @include pc {
-    width: 130px;
-  }
-  button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  div.close {
     display: flex;
-    flex-direction: column;
-    background: none;
-    border: none;
-    padding: 10px;
-    margin: 0;
-    width: 100%;
-    &:hover {
-      background-color: $orange;
-      color: $white;
-      transition: 0.3s;
+    flex-direction: row;
+    svg {
+      padding: 30px;
+      padding-left: 30px;
+      @include pc {
+        padding: 50px;
+      }
+    }
+  }
+  div.open {
+    position: relative;
+    .menu_content {
+      background-color: $lightOrange;
+      width: 100px;
+      height: 100vh;
+      @include pc {
+        width: 200px;
+      }
+      svg {
+        padding: 30px;
+        padding-left: 20px;
+      }
+      button {
+        flex-direction: column;
+        background: none;
+        border: none;
+        padding: 10px;
+        margin: 0;
+        width: 100%;
+        &:hover {
+          background-color: $orange;
+          color: $white;
+          transition: 0.3s;
+        }
+        @include pc {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  div.logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    img {
+      width: 150px;
+      padding: 20px;
+      @include pc {
+        width: 200px;
+        padding: 30px;
+      }
     }
   }
 }
+
+// .menu_pc {
+//   display: none;
+//   @include pc {
+//     width: 150px;
+//     width: 100vh;
+//     height: 80px;
+//     display: flex;
+//     div.logo {
+//       align-items: center;
+//       padding: 10px;
+//       img {
+//         width: 130px;
+//       }
+//     }
+//     button {
+//       display: flex;
+//       flex-direction: row;
+//       background: none;
+//       border: none;
+//       padding: 10px;
+//       margin: 0;
+//       width: 100%;
+//       &:hover {
+//         // background-color: $orange;
+//         color: $orange;
+//         transition: 0.3s;
+//       }
+//     }
+//   }
+// }
