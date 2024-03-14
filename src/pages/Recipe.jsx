@@ -14,20 +14,23 @@ const Recipe = () => {
   // };
   // console.log(selectedRecipe);
   return (
-    <section>
+    <section className="recipe">
       <Menu />
       <div className="recipe_content">
-        <h2>{selectedRecipe.label}</h2>
+        <h3>{selectedRecipe.label}</h3>
+
         <img className="recipeImage" src={selectedRecipe.image} alt="" />
+        <p className="recipeCalories">
+          Calories : {selectedRecipe.calories}kcal
+        </p>
         <p className="ingredientLines">{selectedRecipe.ingredientLines}</p>
         <div className="recipeUrl">
           <button
           // onClick={OpenOriginalRecipe}
           >
-            Visit{" "}
+            Check More about this recipe{" "}
           </button>
         </div>
-        <p className="recipeCalories">{selectedRecipe.calories}</p>
       </div>
     </section>
   );
