@@ -2,53 +2,71 @@
 @import "./functions";
 @import "./variables";
 
-section.recipe {
-  //   background-color: orange;
-  @include pc {
-    margin: 0 80px;
-  }
+section {
+  // background-color: orange;
+
   div.recipe_content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
+    // @include pc {
+    //   display: flex;
+    //   flex-direction: column;
+    // }
     h3 {
       font-size: 32px;
       margin: 10px auto;
       @include pc {
-        width: 500px;
+        width: auto;
       }
     }
-    img.recipeImage {
-      padding: 10px;
-      width: 400px;
-      height: auto;
-      border-radius: 20px;
-      margin: 0 auto;
-    }
-    p.recipeCalories {
-      font-weight: 600;
-      margin: 10px auto;
-    }
-    p.ingredientLines {
-      width: 400px;
-      margin: 0 auto;
-      padding: 15px;
-      //   white-space: whitespace;
-    }
-    div.recipeUrl {
-      button {
-        border: none;
-        height: 30px;
-        margin: 10px;
-        border-radius: 10px;
-        &:hover {
-          color: $white;
-          background-color: $orange;
-        }
+    div.recipe_data {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @include pc {
+        flex-direction: row;
+        margin: auto;
+      }
+      img.recipeImage {
+        padding: 10px;
+        width: 400px;
+        height: auto;
+        border-radius: 20px;
+        margin: 0 auto;
+      }
+      p.recipe_info {
         @include pc {
-          height: 40px;
-          margin: 15px;
+          margin: auto;
+          padding: 30px;
+        }
+        p.recipeCalories {
+          font-weight: 600;
+          margin: 10px auto;
+        }
+        p.ingredientLines {
+          border: 1px solid;
+          border-radius: 10px;
+          width: 400px;
+          margin: 0 auto;
+          padding: 15px;
+          //   white-space: whitespace;
+        }
+        div.recipeUrl {
+          button {
+            border: none;
+            height: 30px;
+            margin: 10px;
+            border-radius: 10px;
+            &:hover {
+              color: $white;
+              background-color: $orange;
+            }
+            @include pc {
+              height: 40px;
+              margin: 15px;
+            }
+          }
         }
       }
     }

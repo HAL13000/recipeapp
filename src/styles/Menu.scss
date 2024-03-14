@@ -5,19 +5,25 @@
 nav {
   background: $white;
   position: relative;
+  width: 100vw;
+  height: 80px;
   display: flex;
   align-items: center;
+  @include pc {
+    height: 100px;
+  }
   div.close {
+    position: absolute;
     display: flex;
     flex-direction: row;
     svg {
-      padding: 30px;
-      padding-left: 30px;
+      padding: 20px 10px;
       @include pc {
-        padding: 50px;
+        padding: 30px 20px;
       }
     }
   }
+
   div.open {
     position: relative;
     .menu_content {
@@ -28,8 +34,10 @@ nav {
         width: 200px;
       }
       svg {
-        padding: 30px;
-        padding-left: 20px;
+        padding: 20px 10px;
+        @include pc {
+          padding: 30px 20px;
+        }
       }
       button {
         flex-direction: column;
@@ -45,6 +53,7 @@ nav {
         }
         @include pc {
           font-size: 20px;
+          padding: 10px 20px;
         }
       }
     }
@@ -56,42 +65,11 @@ nav {
 
     img {
       width: 150px;
-      padding: 20px;
+      margin: 10px;
       @include pc {
         width: 200px;
-        padding: 30px;
+        margin: 20px;
       }
     }
   }
 }
-
-// .menu_pc {
-//   display: none;
-//   @include pc {
-//     width: 150px;
-//     width: 100vh;
-//     height: 80px;
-//     display: flex;
-//     div.logo {
-//       align-items: center;
-//       padding: 10px;
-//       img {
-//         width: 130px;
-//       }
-//     }
-//     button {
-//       display: flex;
-//       flex-direction: row;
-//       background: none;
-//       border: none;
-//       padding: 10px;
-//       margin: 0;
-//       width: 100%;
-//       &:hover {
-//         // background-color: $orange;
-//         color: $orange;
-//         transition: 0.3s;
-//       }
-//     }
-//   }
-// }
