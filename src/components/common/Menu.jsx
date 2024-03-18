@@ -32,6 +32,9 @@ const Menu = () => {
       {!showMenu && (
         <div className="close">
           <MenuIcon onClick={handleOpenMenu} className="menuIcon" />
+          <div className="logo">
+            <img src={logo_black} alt="Logo" />
+          </div>
         </div>
       )}
       {showMenu === true && (
@@ -45,9 +48,6 @@ const Menu = () => {
           </div>
         </div>
       )}
-      <div className="logo">
-        <img src={logo_black} alt="Logo" />
-      </div>
     </nav>
   );
 };

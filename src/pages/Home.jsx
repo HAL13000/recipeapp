@@ -13,6 +13,7 @@ import {
   setSelectedRecipe,
 } from "../redux/provider/recipeSlice";
 import { useShowMenu } from "../components/common/MenuContext";
+import Footer from "../components/common/Footer";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -80,6 +81,7 @@ const Home = () => {
             />
           </div>
         ))}
+      {!showMenu && <Footer />}
     </div>
   );
 };
