@@ -3,42 +3,88 @@
 @import "./variables";
 
 div.home {
-  form {
-    // background: green;
-    @include flexBox_spaceCenter;
-  }
   .search {
-    // background: green;
     padding: 30px 0;
+    flex-direction: row;
+
     @include pc {
       padding: 50px 0;
     }
-
-    input {
-      // background-color: blue;
-      padding: 5px;
-      border-radius: 10px;
-      width: 200px;
-      height: 25px;
-      display: flex;
-      @include pc {
-        width: 600px;
-        height: 35px;
+    form {
+      @include flexBox_spaceCenter;
+      background-color: blue;
+      flex-direction: column;
+      div.search_engine {
+        input {
+          padding: 5px;
+          border-radius: 10px;
+          width: 200px;
+          height: 25px;
+          display: flex;
+          @include pc {
+            width: 600px;
+            height: 35px;
+          }
+        }
+        button {
+          padding: 5px;
+          border-radius: 20px;
+          display: flex;
+          margin-left: 5px;
+          &:hover {
+            background: $orange;
+          }
+          @include pc {
+            padding: 10px;
+            border-radius: 30px;
+          }
+        }
+      }
+      div.search_box {
+        background-color: red;
+        width: 300px;
+        span {
+          font-size: 15px;
+          font-weight: 800;
+          padding: 3px;
+        }
+        label {
+          // display: inline-block;
+          display: flex;
+          flex-direction: row;
+          margin-right: 10px;
+          line-height: 16px;
+          cursor: pointer;
+          input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin: -2px 5px 0 0;
+            padding: 0;
+            box-sizing: border-box;
+            vertical-align: middle;
+          }
+        }
       }
     }
-    button {
-      // background-color: skyblue;
-      padding: 5px;
-      border-radius: 20px;
-      display: flex;
-      margin-left: 5px;
-      &:hover {
-        background: $orange;
-      }
-      @include pc {
-        padding: 10px;
-        border-radius: 30px;
-      }
-    }
+    // label {
+    //   display: flex;
+    //   width: 100px;
+    //   flex-direction: row;
+    //   .radio {
+    //     width: 100px;
+    //     display: flex;
+    //     flex-direction: row;
+    //     padding: 0 5px;
+    //     input {
+    //       padding: 0;
+    //       margin: 0;
+    //     }
+    //     p {
+    //       font-size: 14px;
+    //       padding: 0;
+    //       margin: 0;
+    //     }
+    //   }
+    // }
   }
 }
