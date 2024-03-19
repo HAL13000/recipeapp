@@ -50,15 +50,40 @@ const Home = () => {
       {!showMenu && (
         <div className="search">
           <form>
-            <input
-              type="text"
-              placeholder="I want to cook..."
-              value={query}
-              onChange={handleSearchRecipe}
-            />
-            <button type="button" onClick={getSearch}>
-              <SearchIcon />
-            </button>
+            <div className="search_engine">
+              <input
+                type="text"
+                placeholder="I want to cook..."
+                value={query}
+                onChange={handleSearchRecipe}
+              />
+              <button type="button" onClick={getSearch}>
+                <SearchIcon />
+              </button>
+            </div>
+            <div className="search_box">
+              <span className="search_box_title">Detail</span>
+              <label>
+                <input type="checkbox" name="category" value="" cat1 />
+                Breakfast
+              </label>
+              <label>
+                <input type="checkbox" name="category" value="" cat1 />
+                Breakfast
+              </label>
+              <label>
+                <input type="checkbox" name="category" value="" cat1 />
+                Breakfast
+              </label>
+              <label>
+                <input type="checkbox" name="category" value="" cat1 />
+                Breakfast
+              </label>
+              <label>
+                <input type="checkbox" name="category" value="" cat1 />
+                Breakfast
+              </label>
+            </div>
           </form>
         </div>
       )}
