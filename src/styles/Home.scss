@@ -12,10 +12,11 @@ div.home {
     }
     form {
       @include flexBox_spaceCenter;
-      background-color: blue;
       flex-direction: column;
       div.search_engine {
-        input {
+        flex-direction: row;
+        display: flex;
+        input[type="text"] {
           padding: 5px;
           border-radius: 10px;
           width: 200px;
@@ -40,51 +41,52 @@ div.home {
           }
         }
       }
-      div.search_box {
-        background-color: red;
-        width: 300px;
-        span {
-          font-size: 15px;
-          font-weight: 800;
-          padding: 3px;
+      div.search_filter {
+        text-align: center;
+        a {
+          padding: 0;
+          margin: 0;
+          font-size: smaller;
         }
-        label {
-          // display: inline-block;
-          display: flex;
-          flex-direction: row;
-          margin-right: 10px;
-          line-height: 16px;
-          cursor: pointer;
-          input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            margin: -2px 5px 0 0;
-            padding: 0;
-            box-sizing: border-box;
-            vertical-align: middle;
+        a.detail {
+          font-weight: 800;
+        }
+        a:hover + div.search_box_hide {
+          display: block;
+        }
+        div.search_box_hide {
+          display: none;
+          border: 1px solid;
+          border-radius: 10px;
+          margin: 10px;
+          padding: 5px;
+          text-align: left;
+          div.search_box {
+            width: 300px;
+            span {
+              font-size: 15px;
+              font-weight: 800;
+              padding: 3px;
+              margin-right: 200px;
+            }
+            label {
+              flex-direction: row;
+              display: inline-block;
+              margin-right: 10px;
+              line-height: 16px;
+              cursor: pointer;
+              input[type="checkbox"] {
+                width: 16px;
+                height: 16px;
+                margin: -2px 5px 0 0;
+                padding: 0;
+                box-sizing: border-box;
+                vertical-align: middle;
+              }
+            }
           }
         }
       }
     }
-    // label {
-    //   display: flex;
-    //   width: 100px;
-    //   flex-direction: row;
-    //   .radio {
-    //     width: 100px;
-    //     display: flex;
-    //     flex-direction: row;
-    //     padding: 0 5px;
-    //     input {
-    //       padding: 0;
-    //       margin: 0;
-    //     }
-    //     p {
-    //       font-size: 14px;
-    //       padding: 0;
-    //       margin: 0;
-    //     }
-    //   }
-    // }
   }
 }
