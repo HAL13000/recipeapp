@@ -23,6 +23,7 @@ const Home = () => {
   const query = useSelector((state) => state.recipe.query);
   const { showMenu, handleOpenMenu, handleCloseMenu } = useShowMenu();
   const [showDetail, setShowDetail] = useState(false);
+  const [categories, setCategories] = useState([]);
 
   const getSearch = async () => {
     try {
@@ -46,18 +47,29 @@ const Home = () => {
   };
 
   const handleShowDetail = () => {
-    if (showDetail === false) {
-      setShowDetail(true);
+    setShowDetail(!showDetail);
+  };
+
+  // ???
+  const handleCheckboxChange = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      setCategories([...categories, value]);
+      console.log(categories);
     } else {
-      setShowDetail(false);
+      return;
     }
+  };
+  // ???
+  const checkDetail = () => {
+    console.log("checked categories", categories);
   };
   return (
     <div className="home">
       <Menu />
       {!showMenu && (
         <div className="search">
-          <form>
+          <form name="search">
             <div className="search_engine">
               <input
                 type="text"
@@ -81,53 +93,66 @@ const Home = () => {
                   <div className="search_box">
                     <span className="search_box_title">Diet</span>
                     <label>
-                      <input type="checkbox" name="category" value="" cat1 />
+                      <input type="checkbox" name="category" value="balanced" />
                       Balanced
                     </label>
                     <label>
-                      <input type="checkbox" name="category" value="" cat1 />
+                      <input type="checkbox" name="category" value="vegan" />
                       Vegan
                     </label>
                     <label>
-                      <input type="checkbox" name="category" value="" cat1 />
+                      <input
+                        type="checkbox"
+                        name="category"
+                        value="vegetarian"
+                      />
                       Vegetarian
-                    </label>
-                    <label>
-                      <input type="checkbox" name="category" value="" cat1 />
-                      Breakfast
-                    </label>
-                    <label>
-                      <input type="checkbox" name="category" value="" cat1 />
-                      Breakfast
                     </label>
                   </div>
                   <div className="search_box">
                     <span className="search_box_title">Ingredients</span>
                     <label>
-                      <input type="checkbox" name="category" value="" cat1 />
+                      <input
+                        type="checkbox"
+                        name="category"
+                        value="dairy-free"
+                      />
                       Dairy-free
                     </label>
                     <label>
-                      <input type="checkbox" name="category" value="" cat1 />
+                      <input
+                        type="checkbox"
+                        name="category"
+                        value="gluten-free"
+                      />
                       Gluten-Free
                     </label>
                     <label>
-                      <input type="checkbox" name="category" value="" cat1 />
+                      <input
+                        type="checkbox"
+                        name="category"
+                        value="high-protein"
+                      />
                       High-Protein
                     </label>
                     <label>
-                      <input type="checkbox" name="category" value="" cat1 />
+                      <input type="checkbox" name="category" value="low-carb" />
                       Low-Carb
                     </label>
                     <label>
-                      <input type="checkbox" name="category" value="" cat1 />
+                      <input type="checkbox" name="category" value="low-fat" />
                       Low-fat
                     </label>
                     <label>
-                      <input type="checkbox" name="category" value="" cat1 />
+                      <input
+                        type="checkbox"
+                        name="category"
+                        value="low-sugar"
+                      />
                       Low-Sugar
                     </label>
                   </div>
+                  <input type="button" value="Check" onClick={checkDetail} />
                 </div>
               )}
             </div>
