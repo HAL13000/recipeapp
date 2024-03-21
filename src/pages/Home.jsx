@@ -22,6 +22,7 @@ const Home = () => {
   const queryRecipes = useSelector((state) => state.recipe.queryRecipes);
   const query = useSelector((state) => state.recipe.query);
   const { showMenu, handleOpenMenu, handleCloseMenu } = useShowMenu();
+  const [showDetail, setShowDetail] = useState(false);
 
   const getSearch = async () => {
     try {
@@ -44,6 +45,13 @@ const Home = () => {
     navigate(`/recipe`);
   };
 
+  const handleShowDetail = () => {
+    if (showDetail === false) {
+      setShowDetail(true);
+    } else {
+      setShowDetail(false);
+    }
+  };
   return (
     <div className="home">
       <Menu />
@@ -62,60 +70,66 @@ const Home = () => {
               </button>
             </div>
             <div className="search_filter">
-              <a>Refine search by</a>
-              <a className="detail"> Diet, Ingredients ▼</a>
-              <div className="search_box_hide">
-                <div className="search_box">
-                  <span className="search_box_title">Diet</span>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    Balanced
-                  </label>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    Vegan
-                  </label>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    Vegetarian
-                  </label>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    Breakfast
-                  </label>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    Breakfast
-                  </label>
-                </div>
-                <div className="search_box">
-                  <span className="search_box_title">Ingredients</span>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    Dairy-free
-                  </label>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    Gluten-Free
-                  </label>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    High-Protein
-                  </label>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    Low-Carb
-                  </label>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    Low-fat
-                  </label>
-                  <label>
-                    <input type="checkbox" name="category" value="" cat1 />
-                    Low-Sugar
-                  </label>
+              <div className="search_filter_guide">
+                <a>Refine search by</a>
+                <div onClick={handleShowDetail} className="detail">
+                  Diet, Ingredients ▼
                 </div>
               </div>
+              {showDetail === true && (
+                <div className="search_box_hide">
+                  <div className="search_box">
+                    <span className="search_box_title">Diet</span>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      Balanced
+                    </label>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      Vegan
+                    </label>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      Vegetarian
+                    </label>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      Breakfast
+                    </label>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      Breakfast
+                    </label>
+                  </div>
+                  <div className="search_box">
+                    <span className="search_box_title">Ingredients</span>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      Dairy-free
+                    </label>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      Gluten-Free
+                    </label>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      High-Protein
+                    </label>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      Low-Carb
+                    </label>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      Low-fat
+                    </label>
+                    <label>
+                      <input type="checkbox" name="category" value="" cat1 />
+                      Low-Sugar
+                    </label>
+                  </div>
+                </div>
+              )}
             </div>
           </form>
         </div>

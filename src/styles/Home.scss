@@ -43,19 +43,23 @@ div.home {
       }
       div.search_filter {
         text-align: center;
-        a {
-          padding: 0;
-          margin: 0;
-          font-size: smaller;
+        .search_filter_guide {
+          flex-direction: row;
+          @include flexBox_spaceCenter;
+          a {
+            padding: 0;
+            margin: 0;
+            font-size: smaller;
+          }
+          div.detail {
+            font-weight: 800;
+            margin: 0 0 0 5px;
+            padding: 0;
+          }
         }
-        a.detail {
-          font-weight: 800;
-        }
-        a:hover + div.search_box_hide {
-          display: block;
-        }
+
         div.search_box_hide {
-          display: none;
+          // display: none;
           border: 1px solid;
           border-radius: 10px;
           margin: 10px;
