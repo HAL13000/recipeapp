@@ -3,6 +3,8 @@
 @import "./media";
 
 .recipeBox {
+  display: flex;
+  flex-direction: column;
   .recipeBox_container {
     background-color: $lightOrange;
     display: flex;

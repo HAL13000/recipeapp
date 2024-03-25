@@ -3,6 +3,7 @@
 @import "./variables";
 
 div.home {
+  min-height: 100vh;
   .search {
     padding: 30px 0;
     flex-direction: row;
@@ -33,6 +34,7 @@ div.home {
           display: flex;
           margin-left: 5px;
           &:hover {
+            cursor: pointer;
             background: $orange;
           }
           @include pc {
@@ -55,10 +57,16 @@ div.home {
             font-weight: 800;
             margin: 0 0 0 5px;
             padding: 0;
+            &:hover {
+              color: $orange;
+              cursor: pointer;
+            }
           }
         }
 
         div.search_box_hide {
+          display: flex;
+          flex-direction: column;
           // display: none;
           border: 1px solid;
           border-radius: 10px;
@@ -67,6 +75,7 @@ div.home {
           text-align: left;
           div.search_box {
             width: 300px;
+            margin-bottom: 5px;
             span {
               font-size: 15px;
               font-weight: 800;
@@ -87,6 +96,16 @@ div.home {
                 box-sizing: border-box;
                 vertical-align: middle;
               }
+            }
+          }
+          input[type="button"] {
+            border-radius: 5px;
+            border: 1px solid;
+            margin: 5px;
+            align-self: end;
+            &:hover {
+              cursor: pointer;
+              background-color: $darkOrange;
             }
           }
         }
