@@ -50,16 +50,17 @@ const Home = () => {
     setShowDetail(!showDetail);
   };
 
-  // ???
-  const handleCheckboxChange = (event) => {
-    const { value, checked } = event.target;
-    if (checked) {
-      setCategories([...categories, value]);
-      console.log(categories);
-    } else {
-      return;
-    }
-  };
+  // // ???
+  // const checkDetail = (event) => {
+  //   const { value, checked } = event.target;
+  //   if (checked) {
+  //     setCategories([...categories, value]);
+  //     console.log(categories);
+  //   } else {
+  //     console.log("hello");
+  //     return;
+  //   }
+  // };
   // ???
   const checkDetail = () => {
     console.log("checked categories", categories);
