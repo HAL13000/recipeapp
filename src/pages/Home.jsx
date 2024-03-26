@@ -23,7 +23,7 @@ const Home = () => {
   const query = useSelector((state) => state.recipe.query);
   const { showMenu, handleOpenMenu, handleCloseMenu } = useShowMenu();
   const [showDetail, setShowDetail] = useState(false);
-  const [categories, setCategories] = useState([]);
+  const [filterCategories, setFilterCategories] = useState([]);
 
   const getSearch = async () => {
     try {
@@ -63,10 +63,15 @@ const Home = () => {
   // };
   // ???
   const checkDetail = () => {
-    console.log("checked categories", categories);
+    console.log("checked categories", filterCategories);
   };
+
+  const handleCheck = (checked, value) => {
+    console.log(checked, value);
+  };
+
   return (
-    <div className="home">
+    <div className="home" onClick={() => console.log(filterCategories)}>
       <Menu />
       {!showMenu && (
         <div className="search">
@@ -94,11 +99,25 @@ const Home = () => {
                   <div className="search_box">
                     <span className="search_box_title">Diet</span>
                     <label>
-                      <input type="checkbox" name="category" value="balanced" />
+                      <input
+                        type="checkbox"
+                        name="category"
+                        value="balanced"
+                        onClick={(e) =>
+                          handleCheck(e.target.checked, e.target.value)
+                        }
+                      />
                       Balanced
                     </label>
                     <label>
-                      <input type="checkbox" name="category" value="vegan" />
+                      <input
+                        type="checkbox"
+                        name="category"
+                        value="vegan"
+                        onClick={(e) =>
+                          handleCheck(e.target.checked, e.target.value)
+                        }
+                      />
                       Vegan
                     </label>
                     <label>
@@ -106,6 +125,9 @@ const Home = () => {
                         type="checkbox"
                         name="category"
                         value="vegetarian"
+                        onClick={(e) =>
+                          handleCheck(e.target.checked, e.target.value)
+                        }
                       />
                       Vegetarian
                     </label>
@@ -117,6 +139,9 @@ const Home = () => {
                         type="checkbox"
                         name="category"
                         value="dairy-free"
+                        onClick={(e) =>
+                          handleCheck(e.target.checked, e.target.value)
+                        }
                       />
                       Dairy-free
                     </label>
@@ -125,6 +150,9 @@ const Home = () => {
                         type="checkbox"
                         name="category"
                         value="gluten-free"
+                        onClick={(e) =>
+                          handleCheck(e.target.checked, e.target.value)
+                        }
                       />
                       Gluten-Free
                     </label>
@@ -133,15 +161,32 @@ const Home = () => {
                         type="checkbox"
                         name="category"
                         value="high-protein"
+                        onClick={(e) =>
+                          handleCheck(e.target.checked, e.target.value)
+                        }
                       />
                       High-Protein
                     </label>
                     <label>
-                      <input type="checkbox" name="category" value="low-carb" />
+                      <input
+                        type="checkbox"
+                        name="category"
+                        value="low-carb"
+                        onClick={(e) =>
+                          handleCheck(e.target.checked, e.target.value)
+                        }
+                      />
                       Low-Carb
                     </label>
                     <label>
-                      <input type="checkbox" name="category" value="low-fat" />
+                      <input
+                        type="checkbox"
+                        name="category"
+                        value="low-fat"
+                        onClick={(e) =>
+                          handleCheck(e.target.checked, e.target.value)
+                        }
+                      />
                       Low-fat
                     </label>
                     <label>
@@ -149,6 +194,9 @@ const Home = () => {
                         type="checkbox"
                         name="category"
                         value="low-sugar"
+                        onClick={(e) =>
+                          handleCheck(e.target.checked, e.target.value)
+                        }
                       />
                       Low-Sugar
                     </label>
